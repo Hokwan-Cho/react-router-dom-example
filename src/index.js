@@ -1,15 +1,61 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ReactDom from 'react-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function Home(){
+  return(
+    <div>
+        <h2>Home</h2>
+        Home...
+    </div>
+  );
+}
+
+
+function Topics(){
+  return(
+    <div>
+      <h2>Topics</h2>
+      Topics...
+    </div>
+  );
+}
+
+
+
+function Contact(){
+  return(
+    <div>
+      <h2>Contact</h2>
+      Contact...
+    </div>
+  );
+}
+
+
+function App(){
+  return(
+  
+    <div>
+      <h1>Hello React Router Dom</h1>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/topics">Topics</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <Route exact path="/"><Home></Home></Route>
+      <Route path="/topics"><Topics></Topics></Route>
+      <Route path="/contact"><Contact></Contact></Route>
+
+
+    </div>  
+  );
+
+}
+
+ReactDom.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
