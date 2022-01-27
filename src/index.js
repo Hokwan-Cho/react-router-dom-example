@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ReactDom from 'react-dom';
-import { BrowserRouter, Route} from 'react-router-dom';
+import { HashRouter, Route, Switch, NavLink} from 'react-router-dom';
 
 function Home(){
   return(
@@ -41,21 +41,23 @@ function App(){
     <div>
       <h1>Hello React Router Dom</h1>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/topics">Topics</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><NavLink exact to="/">Home</NavLink></li>
+        <li><NavLink to="/topics">Topics</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
-      <Route exact path="/"><Home></Home></Route>
-      <Route path="/topics"><Topics></Topics></Route>
-      <Route path="/contact"><Contact></Contact></Route>
-
+      <Switch>
+        <Route exact path="/"><Home></Home></Route>
+        <Route path="/topics"><Topics></Topics></Route>
+        <Route path="/contact"><Contact></Contact></Route>
+        <Route path="/">Not Found</Route>
+      </Switch>
 
     </div>  
   );
 
 }
 
-ReactDom.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById("root"));
+ReactDom.render(<HashRouter><App /></HashRouter>, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
